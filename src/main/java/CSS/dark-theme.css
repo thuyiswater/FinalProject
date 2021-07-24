@@ -1,0 +1,43 @@
+* {
+    -fx-primary: #060606;
+    -fx-secondary: #FFFF8D;
+    -fx-primarytext: #B2B2B2;
+}
+
+.root {
+    -fx-background-color: -fx-primary;
+}
+
+
+.button {
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+}
+
+.glyph-icon {
+    -fx-fill: -fx-primarytext;
+}
+
+.text-field {
+    -fx-text-fill: -fx-secondary;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.jfx-hamburger-color {
+    -fx-spacing: 7;
+}
+
+.jfx-hamburger-color StackPane  {
+    -fx-background-color: -fx-primarytext;
+    -fx-background-radius: 5px;
+}
+
+.toolbar-button:hover {
+    -fx-background-color: -fx-primarytext;
+    -fx-text-fill:  -fx-primary;
+}
+
+toolbar-button:hover .glyph-icon {
+    -fx-fill:  -fx-primary;
+}

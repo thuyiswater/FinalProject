@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sample.NewsFullViewController"
+        prefWidth="600.0">
+
+<ImageView fx:id="image"></ImageView>
+<Label fx:id="title" wrapText="true" styleClass="fv-title-label"/>
+<Label fx:id="publishedAt" styleClass="published-at-label"/>
+<Label fx:id="link" styleClass="link-label" />
+<Label fx:id="author" styleClass="author"/>
+<TextFlow>
+<Text fx:id="description" styleClass="fv-description"></Text>
+<Text fx:id="url" styleClass="url"></Text>
+</TextFlow>
+        </VBox>

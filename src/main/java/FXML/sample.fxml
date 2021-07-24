@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="905.0" style="-fx-background-color: #9C2B27;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="142.0" layoutY="186.0" prefHeight="34.0" prefWidth="564.0" promptText="tf_welcome" />
+      <Button fx:id="bt_explore" layoutX="392.0" layoutY="436.0" mnemonicParsing="false" style="-fx-background-color: #9C2B27;" stylesheets="@../CSS/dark-theme.css" text="Ready to Explore">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <TextField fx:id="tf_welcome" alignment="CENTER" layoutX="142.0" layoutY="186.0" prefHeight="96.0" prefWidth="657.0" promptText="tf_welcome" style="-fx-background-color: #9C2B27;" text="Welcome To The NewsWorld">
+         <font>
+            <Font name="Blackadder ITC" size="58.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
