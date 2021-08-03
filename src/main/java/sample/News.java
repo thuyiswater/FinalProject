@@ -1,45 +1,34 @@
 package sample;
 
-import java.util.List;
-
 public class News {
     private String title;
-    private String description;
-    private String content;
-    private List<String> imageUrl;
+    private String summary;
     private String pubDate;
-
     private String link;
+    private String image;
 
-    public News() {
-    }
-
-    public News(String title, String description, List<String> imageUrl, String pubDate, String link) {
+    public News(String title, String summary, String image, String pubDate, String link) {
         this.title = title;
-        this.description = description;
-        this.imageUrl = imageUrl;
+        this.summary = summary;
+        this.image = image;
         this.pubDate = pubDate;
         this.link = link;
+    }
+
+    public News() {
+        setTitle(title);
+        setSummary(summary);
+        setPubDate(pubDate);
+        setImage(image);
+        setLink(link);
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setImageUrl(List<String> imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public void setPubDate(String pubDate) {
@@ -50,6 +39,14 @@ public class News {
         this.link = link;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -58,12 +55,8 @@ public class News {
         return pubDate;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public List<String> getImageUrl() {
-        return this.imageUrl;
+    public String getSummary() {
+        return summary;
     }
 
     public String getLink() {
@@ -74,7 +67,7 @@ public class News {
     public String toString() {
         return "News{" +
                 "title=" + title +
-                ", description='" + description + '\'' +
+                ", description='" + summary + '\'' +
                 ", publish date='" + pubDate + '\'' +
                 ", description='" + link;
     }

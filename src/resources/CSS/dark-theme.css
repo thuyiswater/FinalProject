@@ -18,6 +18,15 @@
     -fx-fill: -fx-primarytext;
 }
 
+.text-area *.text {
+    -fx-text-alignment: justify;
+}
+
+.label {
+    -fx-font-size: 18;
+    -fx-font-family: "Lora";
+}
+
 .text-field {
     -fx-text-fill: -fx-secondary;
     -fx-background-color: -fx-secondary;
@@ -38,6 +47,11 @@
     -fx-text-fill:  -fx-primary;
 }
 
-toolbar-button:hover .glyph-icon {
+.toolbar-button:hover .glyph-icon {
     -fx-fill:  -fx-primary;
 }
+
+.selected {
+    -fx-background-color: #F4F5F9;
+}
+

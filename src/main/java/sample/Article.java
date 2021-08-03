@@ -10,7 +10,7 @@ public class Article {
 
     public Article(News news) {
         this.title = news.getTitle();
-        this.description = news.getDescription();
+        this.description = news.getSummary();
         this.pubDate = news.getPubDate();
         this.link = news.getLink();
     }

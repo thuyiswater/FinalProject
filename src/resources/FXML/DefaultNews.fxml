@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="798.0" prefWidth="959.0" stylesheets="@../CSS/dark-theme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DefaultNewsController">
+   <children>
+      <Pane layoutX="1.0" layoutY="-5.0" prefHeight="39.0" prefWidth="972.0" style="-fx-background-color: #DC143C;">
+         <children>
+            <Label layoutX="63.0" layoutY="5.0" stylesheets="@../CSS/dark-theme.css" text="VN Fast News">
+               <font>
+                  <Font name="Colonna MT" size="13.0" />
+               </font>
+               <padding>
+                  <Insets top="4.0" />
+               </padding>
+            </Label>
+            <Button layoutY="1.0" minWidth="53.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="53.0" style="-fx-background-color: 0;" />
+            <FontAwesomeIconView glyphName="BACKWARD" layoutX="14.0" layoutY="28.0" size="20" text="" wrappingWidth="39.0" />
+         </children>
+      </Pane>
+      <HBox layoutX="1.0" layoutY="34.0" prefHeight="45.0" prefWidth="972.0">
+         <children>
+            <Text fill="#fffafa" strokeType="OUTSIDE" strokeWidth="0.0" text="Today" wrappingWidth="85.0">
+               <font>
+                  <Font name="CourierStd-Bold" size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Text>
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="103.0" text="Home">
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="HOME" size="25" text="" wrappingWidth="24.214284896850586" />
+               </graphic>
+            </Button>
+            <TextField alignment="CENTER" prefHeight="25.0" prefWidth="360.0" promptText="Search Your News Here" style="-fx-background-color: #FFFF;">
+               <HBox.margin>
+                  <Insets left="130.0" right="50.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+            <FontAwesomeIconView fill="#140000" glyphName="SEARCH" selectionFill="BLACK" size="20" stroke="#0d0000" strokeLineCap="ROUND" wrappingWidth="25.0">
+               <HBox.margin>
+                  <Insets left="-75.0" top="10.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="149.0" text="Refresh">
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="REFRESH" size="25" wrappingWidth="21.428571701049805" />
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="102.0" text="Info">
+               <graphic>
+                  <FontAwesomeIconView fill="#fcf8f8" glyphName="INFO" size="25" wrappingWidth="7.928571701049805" />
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <HBox layoutY="79.0" prefHeight="27.0" prefWidth="973.0" styleClass="text">
+         <children>
+            <Label fx:id="hotNews" prefHeight="27.0" prefWidth="63.0" text="New" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets left="10.0" right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="covid" prefHeight="27.0" prefWidth="65.0" text="Covid" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="politics" prefHeight="27.0" prefWidth="68.0" text="Politics" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="business" prefHeight="27.0" prefWidth="92.0" text="Business" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="tech" prefHeight="27.0" prefWidth="120.0" text="Technology" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="health" prefHeight="27.0" prefWidth="88.0" text="Health" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="entertainment" prefHeight="27.0" prefWidth="123.0" text="Entertainment" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="world" prefHeight="27.0" prefWidth="77.0" text="World" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="others" prefHeight="27.0" prefWidth="83.0" text="Others" textFill="#f2eeee">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font name="Bauhaus 93" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ScrollPane fx:id="body" layoutY="115.0" prefHeight="688.0" prefWidth="973.0" stylesheets="@../CSS/dark-theme.css">
+         <content>
+            <GridPane fx:id="newsLayout" prefHeight="810.0" prefWidth="958.0" style="-fx-background-color: #141414;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
