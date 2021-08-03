@@ -6,8 +6,6 @@ public class Article {
     private String pubDate;
     private String link;
 
-    private String guid;
-
     public Article(News news) {
         this.title = news.getTitle();
         this.description = news.getSummary();
@@ -31,17 +29,12 @@ public class Article {
         return link;
     }
 
-    public String getGuid() {
-        return guid;
-    }
-
     @Override
     public String toString() {
         return "Article{" +
                 "title=" + title +
                 ", description='" + description + '\'' +
                 ", publish date='" + pubDate + '\'' +
-                ", description='" + link + '\'' +
-                ", guide='" + guid;
+                ", description='" + link + '\'';
     }
 }

@@ -8,6 +8,14 @@
     -fx-background-color: -fx-primary;
 }
 
+.welcome-button {
+    -fx-background-color: #141414;
+}
+
+.welcome-button:hover {
+    -fx-background-color: -fx-primarytext;
+    -fx-text-fill:  -fx-primary;
+}
 
 .button {
     -fx-text-fill: -fx-primarytext;
@@ -31,15 +39,6 @@
     -fx-text-fill: -fx-secondary;
     -fx-background-color: -fx-secondary;
     -fx-text-fill: -fx-primary;
-}
-
-.jfx-hamburger-color {
-    -fx-spacing: 7;
-}
-
-.jfx-hamburger-color StackPane  {
-    -fx-background-color: -fx-primarytext;
-    -fx-background-radius: 5px;
 }
 
 .toolbar-button:hover {
