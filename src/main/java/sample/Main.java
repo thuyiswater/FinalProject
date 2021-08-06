@@ -12,13 +12,13 @@ import java.awt.*;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample.fxml"));
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Vietnam Fast News");
-        primaryStage.show();
-//        Scraper scraper = new Scraper();
-//        scraper.getHealth();
+//        Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample.fxml"));
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.setTitle("Vietnam Fast News");
+//        primaryStage.show();
+        Scraper scraper = new Scraper();
+        scraper.getHealth();
     }
 
     public static void main(String[] args) {

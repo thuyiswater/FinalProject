@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="welcomeRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="907.0" style="-fx-background-color: #9C2B27;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Button fx:id="btnExplore" layoutX="379.0" layoutY="437.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="38.0" prefWidth="196.0" stylesheets="@../CSS/dark-theme.css" text="Ready to Explore" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="btnExplore" layoutX="379.0" layoutY="437.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="38.0" prefWidth="196.0" stylesheets="@../CSS/dark-theme.css" text="Ready to Explore" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="379.0" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="437.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

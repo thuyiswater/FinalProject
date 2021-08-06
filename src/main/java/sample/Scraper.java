@@ -2,9 +2,6 @@ package sample;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.DocumentType;
-import org.jsoup.nodes.Node;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +9,18 @@ import java.util.stream.Collectors;
 
 public class Scraper {
     public List<String> healthList = new ArrayList<>();
-
+    Categories categories = new Categories();
+//    String[] healthSection = {"https://vnexpress.net/suc-khoe", "https://tuoitre.vn/suc-khoe.htm",
+//    "https://nhandan.vn/y-te", "https://zingnews.vn/suc-khoe.html", "https://thanhnien.vn/suc-khoe/"};
     public Scraper() {
     }
 
-    public List<String> getHealth() throws IOException {
+    public void getHealth() throws IOException {
         Document document = Jsoup.connect("https://vnexpress.net/suc-khoe").get();
         healthList = document.select("h3 > a[href$=.html]")
                     .stream().map(p -> p.attr("abs:href"))
                     .collect(Collectors.toList());
-        return healthList;
+        categories.setHealthList(healthList);
     }
 
 //    public News getVENews(String link) throws IOException {
@@ -48,7 +47,7 @@ public class Scraper {
 }
 
 //        for (String link : sectionList) {
-//            Document document = Jsoup.connect("https://vnexpress.net/sieu-thi-tp-hcm-dong-cua-som-4330708.html").get();
+//            Document = Jsoup.connect("https://vnexpress.net/sieu-thi-tp-hcm-dong-cua-som-4330708.html").get();
 //            String title = document.getElementsByClass("title-detail").text();
 //            String summary = document.select("p.description").text();
 //            String content = document.select("article.fck_detail > p").text();

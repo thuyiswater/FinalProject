@@ -27,9 +27,9 @@ public class HealthNewsController implements Initializable {
     @FXML
     private ScrollPane scroll;
 
+    Categories categories = new Categories();
 
     private List<News> healthNewsList = new ArrayList<>();
-    private List<String> healthList = new ArrayList<>();
 
     public News getVENews(String link) throws IOException {
         News news = new News();
@@ -57,8 +57,7 @@ public class HealthNewsController implements Initializable {
         List<News> healthNewsList = new ArrayList<>();
         News news;
         Scraper scraper = new Scraper();
-        healthList = scraper.getHealth();
-        for (String link : healthList) {
+        for (String link : categories.getHealthList()) {
             news = getVENews(link);
             healthNewsList.add(news);
         }
