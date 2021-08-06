@@ -13,33 +13,23 @@ public class ArticleCellController {
     private ImageView img;
 
     @FXML
-    private ImageView brand;
-
-    @FXML
     private Text summary;
 
     @FXML
     private Text pubDate;
 
 
-    private News news;
+    private Article news;
 
-    //    Scraper scraper = new Scraper();
-//    @FXML
-//    void initialize() throws IOException {
-//        news = scraper.getVENews();
-
-    public void setNews(News news) throws IOException {
-        this.news = news;
-        Image image = new Image("Image/logo_default.jpg");
+    public void setArticle(Article article) throws IOException {
+        this.news = article;
         Image extraImage = new Image("Image/logo_default.jpg");
-        this.brand.setImage(image);
-        this.pubDate.setText(news.getPubDate());
-        this.summary.setText(news.getSummary());
-        if (news.getImage() == null || news.getImage().isEmpty()) {
+        this.pubDate.setText(article.getPubDate());
+        this.summary.setText(article.getSummary());
+        if (article.getImage() == null || article.getImage().isEmpty()) {
             this.img.setImage(extraImage);
         } else {
-            Image mainImage = new Image(news.getImage());
+            Image mainImage = new Image(article.getImage());
             this.img.setImage(mainImage);
         }
     }

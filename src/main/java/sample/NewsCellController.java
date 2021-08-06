@@ -3,11 +3,9 @@ package sample;
 
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,7 +16,7 @@ public class NewsCellController {
 
     private WebEngine engine;
     Scraper scraper;
-    News news;
+    Article news;
 
 //    @Override
     public void loadContentNews(URL url, ResourceBundle resourceBundle) {

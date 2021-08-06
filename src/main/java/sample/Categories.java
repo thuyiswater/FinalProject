@@ -1,10 +1,11 @@
 package sample;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Categories {
-    private List<String> newsList = new ArrayList<>();
+    private List<String> newList = new ArrayList<>();
     private List<String> covidList = new ArrayList<>();
     private List<String> politicsList = new ArrayList<>();
     private List<String> businessList = new ArrayList<>();
@@ -15,11 +16,14 @@ public class Categories {
     private List<String> worldList = new ArrayList<>();
     private List<String> othersList = new ArrayList<>();
 
-    public Categories() {
+    Scraper scraper = new Scraper();
+
+    public Categories() throws IOException {
+        setHealthList(scraper.getHealth());
     }
 
-    public List<String> getNewsList() {
-        return newsList;
+    public List<String> getNewList() {
+        return newList;
     }
 
     public List<String> getCovidList() {
@@ -58,8 +62,8 @@ public class Categories {
         return othersList;
     }
 
-    public void setNewsList(List<String> newsList) {
-        this.newsList = newsList;
+    public void setNewList(List<String> newList) {
+        this.newList = newList;
     }
 
     public void setCovidList(List<String> covidList) {

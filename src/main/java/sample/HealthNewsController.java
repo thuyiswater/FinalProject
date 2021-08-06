@@ -27,12 +27,10 @@ public class HealthNewsController implements Initializable {
     @FXML
     private ScrollPane scroll;
 
-    Categories categories = new Categories();
+    private List<Article> healthNewsList = new ArrayList<>();
 
-    private List<News> healthNewsList = new ArrayList<>();
-
-    public News getVENews(String link) throws IOException {
-        News news = new News();
+    public Article getVENews(String link) throws IOException {
+        Article news = new Article();
         Document document = Jsoup.connect(link).get();
         document.childNodes()
                 .stream()
@@ -53,10 +51,10 @@ public class HealthNewsController implements Initializable {
         return news;
     }
 
-    private List<News> getHealthNews() throws IOException {
-        List<News> healthNewsList = new ArrayList<>();
-        News news;
-        Scraper scraper = new Scraper();
+    private List<Article> getHealthNews() throws IOException {
+        Categories categories = new Categories();
+        List<Article> healthNewsList = new ArrayList<>();
+        Article news;
         for (String link : categories.getHealthList()) {
             news = getVENews(link);
             healthNewsList.add(news);
@@ -76,7 +74,7 @@ public class HealthNewsController implements Initializable {
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 ArticleCellController articleCellController = fxmlLoader.getController();
-                articleCellController.setNews(healthNewsList.get(i));
+                articleCellController.setArticle(healthNewsList.get(i));
 
                 if (column == 3) {
                     column = 0;
@@ -88,7 +86,7 @@ public class HealthNewsController implements Initializable {
                 health.setMaxWidth(Region.USE_COMPUTED_SIZE);
                 health.setMinWidth(1750);
                 health.setMinHeight(Region.USE_COMPUTED_SIZE);
-                GridPane.setMargin(health, new Insets(10));
+                GridPane.setMargin(health, new Insets(5, 5, 5, 5));
             }
         } catch (IOException e) {
             e.printStackTrace();
