@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.Parent;
+
 public interface MyListener {
-    public void onClickListener(Article news);
+    public void onClickListener(Parent news);
 }

@@ -22,8 +22,20 @@
     -fx-background-color: -fx-primary;
 }
 
-.glyph-icon {
-    -fx-fill: -fx-primarytext;
+.transparent {
+    -fx-background-color: rgba(0, 0, 0, 0);
+}
+
+.selected {
+    -fx-background-color: #DEB887;
+}
+
+.rect-round {
+    -fx-background-radius: 10;
+}
+
+.mouse-moved:hover {
+    -fx-background-color: #EFEFEF;
 }
 
 .text-area *.text {

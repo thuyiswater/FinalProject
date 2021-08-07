@@ -3,7 +3,6 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -12,7 +11,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.DocumentType;
 import org.jsoup.nodes.Node;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -51,9 +49,9 @@ public class HealthNewsController implements Initializable {
         return news;
     }
 
-    private List<Article> getHealthNews() throws IOException {
+    private ArrayList<Article> getHealthNews() throws IOException {
         Categories categories = new Categories();
-        List<Article> healthNewsList = new ArrayList<>();
+        ArrayList<Article> healthNewsList = new ArrayList<>();
         Article news;
         for (String link : categories.getHealthList()) {
             news = getVENews(link);
@@ -76,7 +74,7 @@ public class HealthNewsController implements Initializable {
                 ArticleCellController articleCellController = fxmlLoader.getController();
                 articleCellController.setArticle(healthNewsList.get(i));
 
-                if (column == 3) {
+                if (column == 2) {
                     column = 0;
                     row++;
                 }
@@ -86,7 +84,6 @@ public class HealthNewsController implements Initializable {
                 health.setMaxWidth(Region.USE_COMPUTED_SIZE);
                 health.setMinWidth(1750);
                 health.setMinHeight(Region.USE_COMPUTED_SIZE);
-                GridPane.setMargin(health, new Insets(5, 5, 5, 5));
             }
         } catch (IOException e) {
             e.printStackTrace();

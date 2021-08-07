@@ -9,7 +9,8 @@ import java.util.stream.Collectors;
 
 public class Scraper {
     public List<String> healthList = new ArrayList<>();
-
+    String[] healthSection = {"https://vnexpress.net/suc-khoe", "https://thanhnien.vn/the-thao/",
+            "https://tuoitre.vn/the-thao.htm", "https://zingnews.vn/suc-khoe.html", "https://nhandan.vn/thethao"};
     public Scraper() {
     }
 
@@ -19,6 +20,21 @@ public class Scraper {
                     .stream().map(p -> p.attr("abs:href"))
                     .limit(10)
                     .collect(Collectors.toList());
+//        Document document = Jsoup.connect("https://thanhnien.vn/the-thao/").get();
+//        healthList = document.select("h2 > a[href$=.html]")
+//                .stream().map(p -> p.attr("abs:href"))
+//                .limit(10)
+//                .collect(Collectors.toList());
+//        Document document = Jsoup.connect("https://tuoitre.vn/the-thao.htm").get();
+//        healthList = document.select("h2 > a[href$=.html]")
+//                .stream().map(p -> p.attr("abs:href"))
+//                .limit(10)
+//                .collect(Collectors.toList());
+//        Document document = Jsoup.connect("https://zingnews.vn/suc-khoe.html").get();
+//        healthList = document.select("h2 > a[href$=.html]")
+//                .stream().map(p -> p.attr("abs:href"))
+//                .limit(10)
+//                .collect(Collectors.toList());
         return healthList;
     }
 

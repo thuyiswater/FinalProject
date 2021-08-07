@@ -16,21 +16,25 @@ public class ArticleCellController {
     private Text summary;
 
     @FXML
+    private Text title;
+
+    @FXML
     private Text pubDate;
 
 
-    private Article news;
+    private Article article;
 
     public void setArticle(Article article) throws IOException {
-        this.news = article;
+        this.article = article;
         Image extraImage = new Image("Image/logo_default.jpg");
-        this.pubDate.setText(article.getPubDate());
-        this.summary.setText(article.getSummary());
         if (article.getImage() == null || article.getImage().isEmpty()) {
             this.img.setImage(extraImage);
         } else {
             Image mainImage = new Image(article.getImage());
             this.img.setImage(mainImage);
         }
+        this.title.setText(article.getTitle());
+        this.summary.setText(article.getSummary());
+        this.pubDate.setText(article.getPubDate());
     }
 }
