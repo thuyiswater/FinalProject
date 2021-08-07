@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 public class Scraper {
     public List<String> healthList = new ArrayList<>();
-//    String[] healthSection = {"https://vnexpress.net/suc-khoe", "https://tuoitre.vn/suc-khoe.htm",
-//    "https://nhandan.vn/y-te", "https://zingnews.vn/suc-khoe.html", "https://thanhnien.vn/suc-khoe/"};
 
     public Scraper() {
     }
@@ -19,6 +17,88 @@ public class Scraper {
         Document document = Jsoup.connect("https://vnexpress.net/suc-khoe").get();
         healthList = document.select("h3 > a[href$=.html]")
                     .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getNew() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/tin-tuc-24h").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getCovid() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/goc-nhin/covid-19").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getPolitics() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/phap-luat").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getBusiness() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/kinh-doanh").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getOthers() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/oto-xe-may").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getTech() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/so-hoa").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getEntertainment() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/giai-tri").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getWorld() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/the-gioi").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
+                    .collect(Collectors.toList());
+        return healthList;
+    }
+
+    public List<String> getSports() throws IOException {
+        Document document = Jsoup.connect("https://vnexpress.net/the-gioi").get();
+        healthList = document.select("h3 > a[href$=.html]")
+                    .stream().map(p -> p.attr("abs:href"))
+                    .limit(10)
                     .collect(Collectors.toList());
         return healthList;
     }

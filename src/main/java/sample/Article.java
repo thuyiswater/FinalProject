@@ -67,8 +67,8 @@ public class Article {
     public String toString() {
         return "News{" +
                 "title=" + title +
-                ", description='" + summary + '\'' +
+                ", summary='" + summary + '\'' +
                 ", publish date='" + pubDate + '\'' +
-                ", description='" + link;
+                ", link='" + link;
     }
 }
