@@ -28,34 +28,29 @@ public class HealthNewsController implements Initializable {
     private List<Article> healthNewsList = new ArrayList<>();
 
     public Article getVENews(String link) throws IOException {
-        Article news = new Article();
+        Article article = new Article();
         Document document = Jsoup.connect(link).get();
-        document.childNodes()
-                .stream()
-                .filter(node -> node instanceof DocumentType)
-                .findFirst()
-                .ifPresent(Node::remove);
         String title = document.getElementsByClass("title-detail").text();
         String summary = document.select("p.description").text();
         String timeline = document.getElementsByClass("date").text();
         String imgUrl = document.select("img").attr("data-src");
-        news.setTitle(title);
-        news.setPubDate(timeline);
-        news.setLink(link);
-        news.setSummary(summary);
+        article.setTitle(title);
+        article.setPubDate(timeline);
+        article.setLink(link);
+        article.setSummary(summary);
         if (imgUrl != null) {
-            news.setImage(imgUrl);
+            article.setImage(imgUrl);
         }
-        return news;
+        return article;
     }
 
-    private ArrayList<Article> getHealthNews() throws IOException {
+    private ArrayList<Article> getHealthArticle() throws IOException {
         Categories categories = new Categories();
         ArrayList<Article> healthNewsList = new ArrayList<>();
-        Article news;
+        Article article;
         for (String link : categories.getHealthList()) {
-            news = getVENews(link);
-            healthNewsList.add(news);
+            article = getVENews(link);
+            healthNewsList.add(article);
         }
         return healthNewsList;
     }
@@ -63,22 +58,22 @@ public class HealthNewsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            healthNewsList.addAll(getHealthNews());
+            healthNewsList.addAll(getHealthArticle());
             int column = 0;
             int row = 1;
             for (int i = 0; i < healthNewsList.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/FXML/ArticleCell.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/FXML/ArticleCell.fxml"));
+                AnchorPane anchorPane = loader.load();
 
-                ArticleCellController articleCellController = fxmlLoader.getController();
+                ArticleCellController articleCellController = loader.getController();
                 articleCellController.setArticle(healthNewsList.get(i));
 
                 if (column == 2) {
                     column = 0;
                     row++;
                 }
-
+                
                 health.add(anchorPane, column++, row);
                 health.setMaxHeight(Region.USE_COMPUTED_SIZE);
                 health.setMaxWidth(Region.USE_COMPUTED_SIZE);
