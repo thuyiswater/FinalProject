@@ -6,35 +6,28 @@ import javafx.fxml.FXML;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class NewsCellController {
 
     @FXML
     private WebView link;
 
     private WebEngine engine;
-    Scraper scraper;
-    Article news;
+    private Article article;
 
-//    @Override
-    public void loadContentNews(URL url, ResourceBundle resourceBundle) {
+    public NewsCellController(Article article) {
+        this.article = article;
+    }
+
+    public void loadContentNews() {
         engine = link.getEngine();
         link.getEngine().getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != Worker.State.SUCCEEDED) {
                 System.out.println("Please wait a little");
             }
         });
-        scraper = new Scraper();
-//        try {
-////            news = scraper.getVENews("https://vnexpress.net/bo-y-te-tp-hcm-duoc-phan-bo-vaccine-nhieu-nhat-ca-nuoc-4333640.html");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         loadNews();
     }
     public void loadNews() {
-        engine.loadContent(news.getLink());
+        engine.loadContent(article.getLink());
     }
 }

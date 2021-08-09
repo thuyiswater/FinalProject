@@ -12,6 +12,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.setTitle("Vietnam Fast News");
         primaryStage.show();
 //        Scraper scraper = new Scraper();

@@ -1,19 +1,13 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,13 +21,35 @@ public class DefaultNewsController implements Initializable {
     private Button btnNew;
 
     @FXML
-    private Label health;
+    private Button btnCovid;
+
+    @FXML
+    private Button btnPolitics;
+
+    @FXML
+    private Button btnBusiness;
+
+    @FXML
+    private Button btnTech;
 
     @FXML
     private Button btnHealth;
 
     @FXML
+    private Button btnSports;
+
+    @FXML
+    private Button btnEntertainment;
+
+    @FXML
+    private Button btnWorld;
+
+    @FXML
+    private Button btnOthers;
+
+    @FXML
     private AnchorPane content;
+
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,4 +59,5 @@ public class DefaultNewsController implements Initializable {
         ScrollPane healthLayout = FXMLLoader.load(getClass().getResource("/FXML/HealthNews.fxml"));
         content.getChildren().setAll(healthLayout);
     }
+
 }

@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 
 public class Scraper {
     public List<String> healthList = new ArrayList<>();
-    String[] healthSection = {"https://vnexpress.net/suc-khoe", "https://thanhnien.vn/the-thao/",
-            "https://tuoitre.vn/the-thao.htm", "https://zingnews.vn/suc-khoe.html", "https://nhandan.vn/thethao"};
+//    String[] healthSection = {"https://vnexpress.net/suc-khoe", "https://thanhnien.vn/the-thao/",
+//            "https://tuoitre.vn/the-thao.htm", "https://zingnews.vn/suc-khoe.html", "https://nhandan.vn/thethao"};
     public Scraper() {
     }
 
