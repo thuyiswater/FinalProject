@@ -8,12 +8,23 @@
       <root url="jar://$PROJECT_DIR$/../apache-maven-3.8.1/rome-1.16.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/../apache-maven-3.8.1/jdom2-2.0.6.jar!/" />
       <root url="jar://$PROJECT_DIR$/../apache-maven-3.8.1/fontawesomefx-8.9.jar!/" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib/javafx.base" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib/javafx.controls" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib/javafx.fxml" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib/javafx.graphics" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib/javafx.media" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib/javafx.swing" />
+      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib/javafx.web" />
     </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" recursive="false" type="SOURCES" />
   </library>
 </component>

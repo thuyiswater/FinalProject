@@ -39,52 +39,52 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="-6.0" layoutY="48.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1082.0" spacing="5.0">
          <children>
-            <Button fx:id="btnNew" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="78.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="New" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnNew" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNewClicked" prefHeight="39.0" prefWidth="78.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="New" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnCovid" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="41.0" prefWidth="72.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Covid" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnCovid" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCovidClicked" prefHeight="41.0" prefWidth="72.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Covid" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnPolitics" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="93.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Politics" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnPolitics" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPoliticsClicked" prefHeight="39.0" prefWidth="93.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Politics" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnBusiness" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Business" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnBusiness" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBusinessClicked" prefHeight="39.0" prefWidth="109.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Business" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnTech" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="143.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Technology" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnTech" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onTechClicked" prefHeight="39.0" prefWidth="143.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Technology" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnHealth" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onHealthClicked" prefHeight="41.0" prefWidth="85.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Health" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnHealth" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onHealthClicked" prefHeight="46.0" prefWidth="85.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Health" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnSports" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="138.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Sports" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnSports" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onSportsClicked" prefHeight="32.0" prefWidth="138.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Sports" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnEntertainment" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="121.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Entertainment" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnEntertainment" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEntertainmentClicked" prefHeight="47.0" prefWidth="122.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Entertainment" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnWorld" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="108.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="World" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnWorld" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onWorldClicked" prefHeight="39.0" prefWidth="108.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="World" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnOthers" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="87.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Others" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnOthers" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOthersClicked" prefHeight="39.0" prefWidth="87.0" styleClass="mouse-moved" stylesheets="@../CSS/dark-theme.css" text="Others" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>

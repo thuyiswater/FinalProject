@@ -20,6 +20,15 @@ public class Categories {
 
     public Categories() throws IOException {
         setHealthList(scraper.getHealth());
+        setSportsList(scraper.getSports());
+        setBusinessList(scraper.getBusiness());
+        setNewList(scraper.getNew());
+        setPoliticsList(scraper.getPolitics());
+        setOthersList(scraper.getOthers());
+        setEntertainmentList(scraper.getEntertainment());
+        setTechnologyList(scraper.getTech());
+        setWorldList(scraper.getWorld());
+        setCovidList(scraper.getCovid());
     }
 
     public List<String> getNewList() {
