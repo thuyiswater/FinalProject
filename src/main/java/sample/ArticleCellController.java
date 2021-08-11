@@ -39,7 +39,6 @@ public class ArticleCellController {
         }
         this.link.setText(article.getTitle());
         this.link.setOnMouseClicked(e -> {
-            try {
                 Stage stage = new Stage();
                 WebView articlePage = new WebView();
                 articlePage.getEngine().load(article.getLink());
@@ -47,9 +46,6 @@ public class ArticleCellController {
 //                stage.setMaximized(true);
                 stage.setScene(scene);
                 stage.show();
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            }
         });
         this.summary.setText(article.getSummary());
         this.pubDate.setText(article.getPubDate());

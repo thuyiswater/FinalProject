@@ -36,13 +36,13 @@ public class WorldNewsController implements Initializable {
 
 
     private ArrayList<Article> getWorldArticle() throws IOException {
-        ArrayList<Article> politicsNewsList = new ArrayList<>();
+        ArrayList<Article> worldNewsList = new ArrayList<>();
         Article article;
         for (String link : categories.getWorldList()) {
             article = getVENews(link);
-            politicsNewsList.add(article);
+            worldNewsList.add(article);
         }
-        return politicsNewsList;
+        return worldNewsList;
     }
 
     @FXML

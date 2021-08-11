@@ -36,13 +36,13 @@ public class OthersNewsController implements Initializable {
 
 
     private ArrayList<Article> getOthersArticle() throws IOException {
-        ArrayList<Article> politicsNewsList = new ArrayList<>();
+        ArrayList<Article> othersNewsList = new ArrayList<>();
         Article article;
-        for (String link : categories.getWorldList()) {
+        for (String link : categories.getOthersList()) {
             article = getVENews(link);
-            politicsNewsList.add(article);
+            othersNewsList.add(article);
         }
-        return politicsNewsList;
+        return othersNewsList;
     }
 
     @FXML
