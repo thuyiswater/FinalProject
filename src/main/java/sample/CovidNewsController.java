@@ -26,12 +26,20 @@ public class CovidNewsController implements Initializable {
     }
 
     public Article getVENews(String link) throws IOException {
+        Article article = new Article();
         Document document = Jsoup.connect(link).get();
         String title = document.getElementsByClass("title-detail").text();
         String summary = document.select("p.description").text();
         String timeline = document.getElementsByClass("date").text();
         String imgUrl = document.select("img").attr("data-src");
-        return new Article(title, summary, imgUrl, timeline, link);
+        article.setTitle(title);
+        article.setPubDate(timeline);
+        article.setLink(link);
+        article.setSummary(summary);
+        if (imgUrl != null) {
+            article.setImage(imgUrl);
+        }
+        return article;
     }
 
 
