@@ -3,14 +3,10 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ScrollPane;
+import javafx.geometry.Insets;
+import javafx.scene.control.Pagination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.DocumentType;
-import org.jsoup.nodes.Node;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,32 +18,17 @@ public class HealthNewsController implements Initializable {
     @FXML
     private GridPane health;
 
+    @FXML
+    private Pagination page;
+
     private List<Article> healthNewsList = new ArrayList<>();
     private Categories categories = new Categories();
+    private Sites site = new Sites();
+    private static final int ARTICLES_PER_PAGE = 10;
+    private static final int MAX_COLS = 4;
+
 
     public HealthNewsController() throws IOException {
-    }
-
-    public Article getVENews(String link) throws IOException {
-//        Article article = new Article();
-        Document document = Jsoup.connect(link).get();
-//        document.childNodes()
-//                .stream()
-//                .filter(node -> node instanceof DocumentType)
-//                .findFirst()
-//                .ifPresent(Node::remove);
-        String title = document.getElementsByClass("title-detail").text();
-        String summary = document.select("p.description").text();
-        String timeline = document.getElementsByClass("date").text();
-        String imgUrl = document.select("img").attr("data-src");
-//        article.setTitle(title);
-//        article.setPubDate(timeline);
-//        article.setLink(link);
-//        article.setSummary(summary);
-//        if (imgUrl != null) {
-//            article.setImage(imgUrl);
-//        }
-        return new Article(title, summary, imgUrl, timeline, link);
     }
 
 
@@ -55,7 +36,7 @@ public class HealthNewsController implements Initializable {
         ArrayList<Article> healthNewsList = new ArrayList<>();
         Article article;
         for (String link : categories.getHealthList()) {
-            article = getVENews(link);
+            article = site.getVnExpress(link);
             healthNewsList.add(article);
         }
         return healthNewsList;
@@ -75,16 +56,27 @@ public class HealthNewsController implements Initializable {
                 ArticleCellController articleCellController = loader.getController();
                 articleCellController.setArticle(healthNewsList.get(i));
 
-                if (column == 2) {
+                if (column == 4) {
                     column = 0;
                     row++;
                 }
-                
+
                 health.add(anchorPane, column++, row);
-                health.setMaxHeight(Region.USE_COMPUTED_SIZE);
-                health.setMaxWidth(Region.USE_COMPUTED_SIZE);
-                health.setMinWidth(1750);
-                health.setMinHeight(Region.USE_COMPUTED_SIZE);
+                anchorPane.setPadding(new Insets(15));
+//                List<Article> articles = new ArrayList<>();
+//                articles.addAll((healthNewsList));
+//                var pagination = new Pagination();
+//                pagination.setPageFactory(page -> {
+//                    int first = page * 10;
+//                    var pageArticles = articles.subList(first, first + ARTICLES_PER_PAGE);
+//                    var pane = new GridPane();
+//                    pane.setHgap(5);
+//                    pane.setVgap(5);
+//                    for (int j = 0; j < pageArticles.size(); j++) {
+//                        pane.add(pageArticles.get(j), j % MAX_COLS, j / MAX_COLS);
+//                    }
+//                    return pane;
+//                });
             }
         } catch (IOException e) {
             e.printStackTrace();

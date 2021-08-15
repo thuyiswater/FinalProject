@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 
-<ScrollPane fx:id="scroll" minWidth="-Infinity" pannable="true" prefWidth="1075.0" stylesheets="@../CSS/dark-theme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HealthNewsController">
+<ScrollPane fx:id="scroll" minWidth="-Infinity" pannable="true" prefHeight="920.0" prefWidth="1920.0" stylesheets="@../CSS/dark-theme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HealthNewsController">
    <content>
-      <GridPane fx:id="health" hgap="5.0" prefHeight="705.0" prefWidth="1075.0" style="-fx-background-color: #000000;" stylesheets="@../CSS/dark-theme.css" vgap="5.0">
+      <GridPane fx:id="health" prefHeight="920.0" prefWidth="1900.0" style="-fx-background-color: #000000;" stylesheets="@../CSS/dark-theme.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="544.0" minWidth="10.0" prefWidth="533.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="544.0" minWidth="10.0" prefWidth="533.0" />
         </columnConstraints>
+          <padding>
+              <Insets left="75.0" right="50.0" />
+          </padding>
       </GridPane>
    </content>
 </ScrollPane>

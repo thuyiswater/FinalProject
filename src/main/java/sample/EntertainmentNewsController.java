@@ -3,11 +3,10 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,30 +20,14 @@ public class EntertainmentNewsController implements Initializable {
     private GridPane entertainment;
 
     private List<Article> entertainmentNewsList = new ArrayList<>();
-
-    public Article getVENews(String link) throws IOException {
-        Article article = new Article();
-        Document document = Jsoup.connect(link).get();
-        String title = document.getElementsByClass("title-detail").text();
-        String summary = document.select("p.description").text();
-        String timeline = document.getElementsByClass("date").text();
-        String imgUrl = document.select("img").attr("data-src");
-        article.setTitle(title);
-        article.setPubDate(timeline);
-        article.setLink(link);
-        article.setSummary(summary);
-        if (imgUrl != null) {
-            article.setImage(imgUrl);
-        }
-        return article;
-    }
+    private Sites site = new Sites();
 
     private ArrayList<Article> getSportsArticle() throws IOException {
         Categories categories = new Categories();
         ArrayList<Article> entertainmentNewsList = new ArrayList<>();
         Article article;
         for (String link : categories.getEntertainmentList()) {
-            article = getVENews(link);
+            article = site.getVnExpress(link);
             entertainmentNewsList.add(article);
         }
         return entertainmentNewsList;
@@ -64,16 +47,13 @@ public class EntertainmentNewsController implements Initializable {
                 ArticleCellController articleCellController = loader.getController();
                 articleCellController.setArticle(entertainmentNewsList.get(i));
 
-                if (column == 2) {
+                if (column == 4) {
                     column = 0;
                     row++;
                 }
 
                 entertainment.add(anchorPane, column++, row);
-                entertainment.setMaxHeight(Region.USE_COMPUTED_SIZE);
-                entertainment.setMaxWidth(Region.USE_COMPUTED_SIZE);
-                entertainment.setMinWidth(1750);
-                entertainment.setMinHeight(Region.USE_COMPUTED_SIZE);
+                anchorPane.setPadding(new Insets(15));
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.Node;
+
 public class Article {
     private String title;
     private String summary;

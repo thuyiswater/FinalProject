@@ -3,11 +3,10 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,33 +20,16 @@ public class CovidNewsController implements Initializable {
 
     private List<Article> covidNewsList = new ArrayList<>();
     private Categories categories = new Categories();
+    private Sites site = new Sites();
 
     public CovidNewsController() throws IOException {
     }
-
-    public Article getVENews(String link) throws IOException {
-        Article article = new Article();
-        Document document = Jsoup.connect(link).get();
-        String title = document.getElementsByClass("title-detail").text();
-        String summary = document.select("p.description").text();
-        String timeline = document.getElementsByClass("date").text();
-        String imgUrl = document.select("img").attr("data-src");
-        article.setTitle(title);
-        article.setPubDate(timeline);
-        article.setLink(link);
-        article.setSummary(summary);
-        if (imgUrl != null) {
-            article.setImage(imgUrl);
-        }
-        return article;
-    }
-
 
     private ArrayList<Article> getCovidArticle() throws IOException {
         ArrayList<Article> politicsNewsList = new ArrayList<>();
         Article article;
         for (String link : categories.getCovidList()) {
-            article = getVENews(link);
+            article = site.getVnExpress(link);
             politicsNewsList.add(article);
         }
         return politicsNewsList;
@@ -67,16 +49,13 @@ public class CovidNewsController implements Initializable {
                 ArticleCellController articleCellController = loader.getController();
                 articleCellController.setArticle(covidNewsList.get(i));
 
-                if (column == 2) {
+                if (column == 4) {
                     column = 0;
                     row++;
                 }
 
                 covid.add(anchorPane, column++, row);
-                covid.setMaxHeight(Region.USE_COMPUTED_SIZE);
-                covid.setMaxWidth(Region.USE_COMPUTED_SIZE);
-                covid.setMinWidth(1750);
-                covid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                anchorPane.setPadding(new Insets(15));
             }
         } catch (IOException e) {
             e.printStackTrace();

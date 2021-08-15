@@ -9,28 +9,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="body" prefHeight="293.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ArticleCellController">
+<AnchorPane fx:id="body" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ArticleCellController">
    <children>
-      <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="294.0" prefWidth="406.0" AnchorPane.leftAnchor="-1.0">
+      <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="294.0" prefWidth="406.0">
          <children>
-            <ImageView fx:id="img" fitHeight="154.0" fitWidth="408.0" pickOnBounds="true" />
+            <ImageView fx:id="img" fitHeight="154.0" fitWidth="417.0" pickOnBounds="true" />
             <Pane prefHeight="53.0" prefWidth="410.0">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <Hyperlink fx:id="link" prefHeight="55.0" prefWidth="409.0" text="Hyperlink" textFill="WHITE" wrapText="true">
+                  <Hyperlink fx:id="link" layoutX="-3.0" prefHeight="55.0" prefWidth="418.0" text="Hyperlink" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Arial Bold" size="17.0" />
-                     </font></Hyperlink>
+                     </font>
+                  </Hyperlink>
                </children>
             </Pane>
-            <Text fx:id="summary" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary" textAlignment="JUSTIFY" wrappingWidth="409.13671875">
+            <Text fx:id="summary" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary" textAlignment="JUSTIFY" wrappingWidth="412.13671875">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
             </Text>
-            <Text fx:id="pubDate" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Published Date" wrappingWidth="407.13671875">
+            <Text fx:id="pubDate" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Published Date" wrappingWidth="415.13671875">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
