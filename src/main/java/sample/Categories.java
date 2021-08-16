@@ -5,30 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Categories {
-    private List<String> newList = new ArrayList<>();
-    private List<String> covidList = new ArrayList<>();
-    private List<String> politicsList = new ArrayList<>();
-    private List<String> businessList = new ArrayList<>();
-    private List<String> technologyList = new ArrayList<>();
-    private List<String> healthList = new ArrayList<>();
-    private List<String> sportsList = new ArrayList<>();
-    private List<String> entertainmentList = new ArrayList<>();
-    private List<String> worldList = new ArrayList<>();
-    private List<String> othersList = new ArrayList<>();
+    private final List<String> newList;
+    private final List<String> covidList;
+    private final List<String> politicsList;
+    private final List<String> businessList;
+    private final List<String> technologyList;
+    private final List<String> healthList;
+    private final List<String> sportsList;
+    private final List<String> entertainmentList;
+    private final List<String> worldList;
+    private final List<String> othersList;
 
-    Scraper scraper = new Scraper();
+    Scraper scraper =  new Scraper();
 
     public Categories() throws IOException {
-        setHealthList(scraper.getHealth());
-        setSportsList(scraper.getSports());
-        setBusinessList(scraper.getBusiness());
-        setNewList(scraper.getNew());
-        setPoliticsList(scraper.getPolitics());
-        setOthersList(scraper.getOthers());
-        setEntertainmentList(scraper.getEntertainment());
-        setTechnologyList(scraper.getTech());
-        setWorldList(scraper.getWorld());
-        setCovidList(scraper.getCovid());
+        newList = scraper.getNew();
+        covidList = scraper.getCovid();
+        politicsList = scraper.getPolitics();
+        businessList = scraper.getBusiness();
+        technologyList = scraper.getTech();
+        healthList = scraper.getHealth();
+        sportsList = scraper.getSports();
+        entertainmentList = scraper.getEntertainment();
+        worldList = scraper.getWorld();
+        othersList = scraper.getOthers();
     }
 
     public List<String> getNewList() {
@@ -69,45 +69,5 @@ public class Categories {
 
     public List<String> getOthersList() {
         return othersList;
-    }
-
-    public void setNewList(List<String> newList) {
-        this.newList = newList;
-    }
-
-    public void setCovidList(List<String> covidList) {
-        this.covidList = covidList;
-    }
-
-    public void setPoliticsList(List<String> politicsList) {
-        this.politicsList = politicsList;
-    }
-
-    public void setBusinessList(List<String> businessList) {
-        this.businessList = businessList;
-    }
-
-    public void setTechnologyList(List<String> technologyList) {
-        this.technologyList = technologyList;
-    }
-
-    public void setHealthList(List<String> healthList) {
-        this.healthList = healthList;
-    }
-
-    public void setSportsList(List<String> sportsList) {
-        this.sportsList = sportsList;
-    }
-
-    public void setEntertainmentList(List<String> entertainmentList) {
-        this.entertainmentList = entertainmentList;
-    }
-
-    public void setWorldList(List<String> worldList) {
-        this.worldList = worldList;
-    }
-
-    public void setOthersList(List<String> othersList) {
-        this.othersList = othersList;
     }
 }

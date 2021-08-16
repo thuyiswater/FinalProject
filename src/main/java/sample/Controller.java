@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -18,8 +17,6 @@ public class Controller implements Initializable {
 
     @FXML
     private Button btnExplore;
-    @FXML
-    private AnchorPane welcomeRoot;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,6 +27,8 @@ public class Controller implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/FXML/DefaultNews.fxml"));
         Stage welcomeWindow = (Stage) btnExplore.getScene().getWindow();
         welcomeWindow.setScene(new Scene(root));
+        welcomeWindow.setMaximized(true);
+        welcomeWindow.setResizable(false);
     }
 }
 

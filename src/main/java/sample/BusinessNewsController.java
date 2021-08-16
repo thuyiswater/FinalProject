@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 
@@ -18,9 +19,9 @@ public class BusinessNewsController implements Initializable {
     @FXML
     private GridPane business;
 
-    private List<Article> businessNewsList = new ArrayList<>();
-    private Categories categories = new Categories();
-    private Sites site = new Sites();
+    private final List<Article> businessNewsList = new ArrayList<>();
+    Categories categories = new Categories();
+    Sites site = new Sites();
 
     public BusinessNewsController() throws IOException {
     }

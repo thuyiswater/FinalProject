@@ -18,11 +18,6 @@ public class Article {
     }
 
     public Article() {
-        setTitle(title);
-        setSummary(summary);
-        setPubDate(pubDate);
-        setImage(image);
-        setLink(link);
     }
 
     public void setTitle(String title) {
