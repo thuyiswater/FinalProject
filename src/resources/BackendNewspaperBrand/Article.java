@@ -56,6 +56,7 @@ public class Article {
     //Constructor
     //Empty
     public Article(){
+
     }
     //Parameterized
     public Article(String title, String link, String image, String summary, String category, String brand) {
@@ -65,7 +66,4 @@ public class Article {
         this.summary = summary;
     }
 
-    public static void main(String[] args) {
-
-    }
 }

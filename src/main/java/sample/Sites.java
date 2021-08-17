@@ -88,12 +88,3 @@ public class Sites {
         return new Article(title, summary, imgUrl, timeline, link);
     }
 }
-
-//        article.setTitle(title);
-//        article.setPubDate(timeline);
-//        article.setLink(link);
-//        article.setSummary(summary);
-//        if (imgUrl != null) {
-//            article.setImage(imgUrl);
-//        }
-//        return article;

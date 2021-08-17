@@ -3,11 +3,10 @@ package com.company;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class WorldNews {
+public class CovidNews {
 
     private ArrayList<Article> articleContainer;
 
@@ -20,17 +19,16 @@ public class WorldNews {
     }
 
     //Empty Constructor
-    WorldNews(){
+    CovidNews(){
         //Initialize value, important !
         this.articleContainer = new ArrayList<>();
     }
 
-    public void getZingNewsWorld() throws IOException {
+    public void getZingNewsCovid() throws IOException {
 
-        String link = "https://zingnews.vn/the-gioi.html";
+        String link = "https://zingnews.vn/tieu-diem/covid-19-bung-phat-2021.html?src=home_trending";
         Document doc = Jsoup.connect(link).get();
         int i = 1;
-
         for(Element e : doc.select("article")){
 
             if(i > 10){
@@ -50,9 +48,9 @@ public class WorldNews {
         }
     }
 
-    public void getTuoiTreWorld() throws IOException {
+    public void getTuoiTreCovid() throws IOException {
 
-        String link = "https://tuoitre.vn/the-gioi.htm";
+        String link = "https://tuoitre.vn/covid-19.html";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -86,10 +84,10 @@ public class WorldNews {
 
     }
 
-    public void getVNExpressWorld() throws IOException {
+    public void getVNExpressCovid() throws IOException {
 
 
-        String link = "https://vnexpress.net/the-gioi";
+        String link = "https://vnexpress.net/chu-de/covid-19-tp-hcm-3273";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -103,11 +101,11 @@ public class WorldNews {
             Article temporaryObject = new Article();
 
             //Load value
-            temporaryObject.setTitle("The title: " + e.getElementsByClass("title-news").text());
-            temporaryObject.setSummary("Article Summary: " + e.getElementsByClass("description").text());
-            temporaryObject.setPubDate("Date posted: " + doc.getElementsByClass("time-now").text());
-            temporaryObject.setLink("The article link: " + e.getElementsByTag("a").attr("href"));
-            temporaryObject.setImage("The image src: " + e.getElementsByTag("img").attr("src"));
+            temporaryObject.setTitle(e.getElementsByClass("title-news").text());
+            temporaryObject.setSummary( e.getElementsByClass("description").text());
+            temporaryObject.setPubDate(doc.getElementsByClass("time-now").text());
+            temporaryObject.setLink(e.getElementsByTag("a").attr("href"));
+            temporaryObject.setImage(e.getElementsByTag("img").attr("src"));
             //Set the value
 
             //Add to the list
@@ -121,9 +119,9 @@ public class WorldNews {
 
     }
 
-    public void getThanhNienWorld() throws IOException {
+    public void getThanhNienCovid() throws IOException {
 
-        String link = "https://thanhnien.vn/the-gioi/";
+        String link = "https://thanhnien.vn/covid-19/";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -157,7 +155,7 @@ public class WorldNews {
             temporaryObject.setLink(articleLink);
             temporaryObject.setImage(article_pic_Src);
             temporaryObject.setTitle(g.getElementsByTag("a").attr("title"));
-            temporaryObject.setPubDate("Article time: "  + g.getElementsByClass("meta").select("time").text());
+            temporaryObject.setPubDate(g.getElementsByClass("meta").select("time").text());
 
             //Add that object in the list of the HealthNews Class
             this.articleContainer.add(temporaryObject);
@@ -170,9 +168,9 @@ public class WorldNews {
 
     }
 
-    public void getNhanDanWorld() throws IOException {
+    public void getNhanDanCovid() throws IOException {
 
-        String linkserver = "https://nhandan.vn/thegioi";
+        String linkserver = "https://nhandan.vn/tag/Covid19-53";
         Document doc = Jsoup.connect(linkserver).get();
         int i = 1;
 
@@ -187,11 +185,17 @@ public class WorldNews {
             //Load the data into the object
             temporaryObject.setTitle(e.getElementsByTag("a").attr("title"));
             String art_link = e.getElementsByTag("a").attr("href");
-            art_link = add_https(art_link);
+            //art_link = add_https(art_link);
+            art_link = nhanDan_add_https(art_link);
             temporaryObject.setLink(art_link);
             temporaryObject.setImage(e.getElementsByTag("img").attr("data-src"));
-            Document testing = Jsoup.connect(art_link).timeout(3000).get();
-            temporaryObject.setPubDate(testing.getElementsByClass("box-date pull-left").text());
+            Document testing = Jsoup.connect(art_link).get();
+            //temporaryObject.setPubDate(testing.getElementsByTag("article").select("box-meta-small").text());
+            temporaryObject.setPubDate((e.getElementsByClass("box-meta-small").text()));
+            if((e.getElementsByClass("box-meta-small").text()).isEmpty()){
+                temporaryObject.setPubDate(testing.getElementsByClass("box-date pull-left").text());
+            }
+            temporaryObject.setSummary(testing.getElementsByTag("p").text());
 
             //Add the object into the list of the class
             this.articleContainer.add(temporaryObject);
@@ -208,10 +212,14 @@ public class WorldNews {
         return ("https://zingnews.vn" + target ) ;
     }
 
+    public static String nhanDan_add_https(String target){
+        return ("https://nhandan.vn" + target);
+
+    }
+
     public String remove_https(String target){
         return target.replace("https://","");
     }
-
 
 
 

@@ -3,11 +3,10 @@ package com.company;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class LatestNews {
+public class TechnologyNews {
 
     private ArrayList<Article> articleContainer;
 
@@ -19,22 +18,30 @@ public class LatestNews {
         this.articleContainer = articleContainer;
     }
 
-    //Empty Constructor
-    LatestNews(){
-        //Initialize value, important !, the object's arraylist will always be null pointer if we don't have this initializer
+    //Parameterized Constructor
+    TechnologyNews(ArrayList<Article> value_holder){
+        this.articleContainer = value_holder;
+    }
+
+    // commented out at 8:28 09/08/2021 !!! work just fine
+    TechnologyNews(){
+        //Initialize value, important !
         this.articleContainer = new ArrayList<>();
     }
 
-    public void getZingNewsLatest() throws IOException {
+    //Test 1 at 8:24 09/07/2021 -> changing from return value into void, previously return value was ArrayList<Article>
+    public void getZingNewsTechnology() throws IOException {
 
-        String link = "https://zingnews.vn/";
+        String link = "https://zingnews.vn/cong-nghe.html";
         Document doc = Jsoup.connect(link).get();
         int i = 1;
+
         for(Element e : doc.select("article")){
 
             if(i > 10){
                 break;
             }
+
             Article temporaryObject = new Article();
             temporaryObject.setTitle(e.getElementsByClass("article-title").text());
             temporaryObject.setPubDate(e.getElementsByClass("friendly-time").text());
@@ -46,11 +53,13 @@ public class LatestNews {
             temporaryObject = null;
             i += 1;
         }
+        System.out.println("Completed !");
+
     }
 
-    public void getTuoiTreLatest() throws IOException {
+    public void getTuoiTreTechnology() throws IOException {
 
-        String link = "https://tuoitre.vn/";
+        String link = "https://congnghe.tuoitre.vn/";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -84,10 +93,10 @@ public class LatestNews {
 
     }
 
-    public void getVNExpressLatest() throws IOException {
+    public void getVNExpressTechnology() throws IOException {
 
 
-        String link = "https://vnexpress.net/tin-tuc-24h";
+        String link = "https://vnexpress.net/so-hoa";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -101,11 +110,11 @@ public class LatestNews {
             Article temporaryObject = new Article();
 
             //Load value
-            temporaryObject.setTitle("The title: " + e.getElementsByClass("title-news").text());
-            temporaryObject.setSummary("Article Summary: " + e.getElementsByClass("description").text());
-            temporaryObject.setPubDate("Date posted: " + doc.getElementsByClass("time-now").text());
-            temporaryObject.setLink("The article link: " + e.getElementsByTag("a").attr("href"));
-            temporaryObject.setImage("The image src: " + e.getElementsByTag("img").attr("src"));
+            temporaryObject.setTitle(e.getElementsByClass("title-news").text());
+            temporaryObject.setSummary(e.getElementsByClass("description").text());
+            temporaryObject.setPubDate(doc.getElementsByClass("time-now").text());
+            temporaryObject.setLink(e.getElementsByTag("a").attr("href"));
+            temporaryObject.setImage(e.getElementsByTag("img").attr("src"));
             //Set the value
 
             //Add to the list
@@ -119,9 +128,9 @@ public class LatestNews {
 
     }
 
-    public void getThanhNienLatest() throws IOException {
+    public void getThanhNienTechnology() throws IOException {
 
-        String link = "https://thanhnien.vn/";
+        String link = "https://thanhnien.vn/cong-nghe/";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -155,7 +164,7 @@ public class LatestNews {
             temporaryObject.setLink(articleLink);
             temporaryObject.setImage(article_pic_Src);
             temporaryObject.setTitle(g.getElementsByTag("a").attr("title"));
-            temporaryObject.setPubDate("Article time: "  + g.getElementsByClass("meta").select("time").text());
+            temporaryObject.setPubDate(g.getElementsByClass("meta").select("time").text());
 
             //Add that object in the list of the HealthNews Class
             this.articleContainer.add(temporaryObject);
@@ -168,9 +177,9 @@ public class LatestNews {
 
     }
 
-    public void getNhanDanLatest() throws IOException {
+    public void getNhanDanTechnology() throws IOException {
 
-        String linkserver = "https://nhandan.vn/";
+        String linkserver = "https://nhandan.vn/khoahoc-congnghe";
         Document doc = Jsoup.connect(linkserver).get();
         int i = 1;
 
@@ -185,11 +194,17 @@ public class LatestNews {
             //Load the data into the object
             temporaryObject.setTitle(e.getElementsByTag("a").attr("title"));
             String art_link = e.getElementsByTag("a").attr("href");
-            art_link = add_https(art_link);
+            //art_link = add_https(art_link);
+            art_link = nhanDan_add_https(art_link);
             temporaryObject.setLink(art_link);
             temporaryObject.setImage(e.getElementsByTag("img").attr("data-src"));
-            Document testing = Jsoup.connect(art_link).timeout(3000).get();
-            temporaryObject.setPubDate(testing.getElementsByClass("box-date pull-left").text());
+            Document testing = Jsoup.connect(art_link).get();
+            //temporaryObject.setPubDate(testing.getElementsByTag("article").select("box-meta-small").text());
+            temporaryObject.setPubDate((e.getElementsByClass("box-meta-small").text()));
+            if((e.getElementsByClass("box-meta-small").text()).isEmpty()){
+                temporaryObject.setPubDate(testing.getElementsByClass("box-date pull-left").text());
+            }
+            temporaryObject.setSummary(testing.getElementsByTag("p").text());
 
             //Add the object into the list of the class
             this.articleContainer.add(temporaryObject);
@@ -206,10 +221,14 @@ public class LatestNews {
         return ("https://zingnews.vn" + target ) ;
     }
 
+    public static String nhanDan_add_https(String target){
+        return ("https://nhandan.vn" + target);
+
+    }
+
     public String remove_https(String target){
         return target.replace("https://","");
     }
-
 
 
 }

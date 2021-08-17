@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class OtherNews {
+public class BusinessNews {
 
     private ArrayList<Article> articleContainer;
 
@@ -20,14 +20,14 @@ public class OtherNews {
     }
 
     //Empty Constructor
-    OtherNews(){
+    BusinessNews(){
         //Initialize value, important !
         this.articleContainer = new ArrayList<>();
     }
 
-    public void getZingNewsOther() throws IOException {
+    public void getZingNewsBusiness() throws IOException {
 
-        String link = "https://zingnews.vn/thoi-su.html";
+        String link = "https://zingnews.vn/kinh-doanh-tai-chinh.html";
         Document doc = Jsoup.connect(link).get();
         int i = 1;
 
@@ -36,7 +36,6 @@ public class OtherNews {
             if(i > 10){
                 break;
             }
-
             Article temporaryObject = new Article();
             temporaryObject.setTitle(e.getElementsByClass("article-title").text());
             temporaryObject.setPubDate(e.getElementsByClass("friendly-time").text());
@@ -50,9 +49,9 @@ public class OtherNews {
         }
     }
 
-    public void getTuoiTreOther() throws IOException {
+    public void getTuoiTreBusiness() throws IOException {
 
-        String link = "https://dulich.tuoitre.vn/";
+        String link = "https://tuoitre.vn/kinh-doanh.htm";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -86,10 +85,10 @@ public class OtherNews {
 
     }
 
-    public void getVNExpressOther() throws IOException {
+    public void getVNExpressBusiness() throws IOException {
 
 
-        String link = "https://vnexpress.net/du-lich";
+        String link = "https://vnexpress.net/kinh-doanh";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -103,11 +102,11 @@ public class OtherNews {
             Article temporaryObject = new Article();
 
             //Load value
-            temporaryObject.setTitle("The title: " + e.getElementsByClass("title-news").text());
-            temporaryObject.setSummary("Article Summary: " + e.getElementsByClass("description").text());
-            temporaryObject.setPubDate("Date posted: " + doc.getElementsByClass("time-now").text());
-            temporaryObject.setLink("The article link: " + e.getElementsByTag("a").attr("href"));
-            temporaryObject.setImage("The image src: " + e.getElementsByTag("img").attr("src"));
+            temporaryObject.setTitle(e.getElementsByClass("title-news").text());
+            temporaryObject.setSummary(e.getElementsByClass("description").text());
+            temporaryObject.setPubDate(doc.getElementsByClass("time-now").text());
+            temporaryObject.setLink(e.getElementsByTag("a").attr("href"));
+            temporaryObject.setImage(e.getElementsByTag("img").attr("src"));
             //Set the value
 
             //Add to the list
@@ -121,9 +120,9 @@ public class OtherNews {
 
     }
 
-    public void getThanhNienOther() throws IOException {
+    public void getThanhNienBusiness() throws IOException {
 
-        String link = "https://thanhnien.vn/du-lich/";
+        String link = "https://thanhnien.vn/tai-chinh-kinh-doanh/";
         Document doc = Jsoup.connect(link).get();
 
         int i = 1;
@@ -157,7 +156,7 @@ public class OtherNews {
             temporaryObject.setLink(articleLink);
             temporaryObject.setImage(article_pic_Src);
             temporaryObject.setTitle(g.getElementsByTag("a").attr("title"));
-            temporaryObject.setPubDate("Article time: "  + g.getElementsByClass("meta").select("time").text());
+            temporaryObject.setPubDate(g.getElementsByClass("meta").select("time").text());
 
             //Add that object in the list of the HealthNews Class
             this.articleContainer.add(temporaryObject);
@@ -170,9 +169,9 @@ public class OtherNews {
 
     }
 
-    public void getNhanDanOther() throws IOException {
+    public void getNhanDanBusiness() throws IOException {
 
-        String linkserver = "https://nhandan.vn/du-lich";
+        String linkserver = "https://nhandan.vn/tag/kinhdoanh-12135";
         Document doc = Jsoup.connect(linkserver).get();
         int i = 1;
 
@@ -187,11 +186,17 @@ public class OtherNews {
             //Load the data into the object
             temporaryObject.setTitle(e.getElementsByTag("a").attr("title"));
             String art_link = e.getElementsByTag("a").attr("href");
-            art_link = add_https(art_link);
+            //art_link = add_https(art_link);
+            art_link = nhanDan_add_https(art_link);
             temporaryObject.setLink(art_link);
             temporaryObject.setImage(e.getElementsByTag("img").attr("data-src"));
             Document testing = Jsoup.connect(art_link).get();
-            temporaryObject.setPubDate(testing.getElementsByClass("box-date pull-left").text());
+            //temporaryObject.setPubDate(testing.getElementsByTag("article").select("box-meta-small").text());
+            temporaryObject.setPubDate((e.getElementsByClass("box-meta-small").text()));
+            if((e.getElementsByClass("box-meta-small").text()).isEmpty()){
+                temporaryObject.setPubDate(testing.getElementsByClass("box-date pull-left").text());
+            }
+            temporaryObject.setSummary(testing.getElementsByTag("p").text());
 
             //Add the object into the list of the class
             this.articleContainer.add(temporaryObject);
@@ -208,11 +213,13 @@ public class OtherNews {
         return ("https://zingnews.vn" + target ) ;
     }
 
+    public static String nhanDan_add_https(String target){
+        return ("https://nhandan.vn" + target);
+
+    }
+
     public String remove_https(String target){
         return target.replace("https://","");
     }
-
-
-
 
 }
