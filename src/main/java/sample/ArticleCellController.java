@@ -9,6 +9,11 @@ import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URI;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ArticleCellController {
 
@@ -34,9 +39,18 @@ public class ArticleCellController {
         this.link.setOnMouseClicked(e -> {
                 Stage stage = new Stage();
                 WebView articlePage = new WebView();
+                URI uri = URI.create(article.getLink());
+                Map<String, List<String>> headers = new LinkedHashMap<>();
+                headers.put("Set-Cookie", Arrays.asList("name = value"));
+                try {
+                    java.net.CookieHandler.getDefault().put(uri, headers);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 articlePage.getEngine().load(article.getLink());
                 Scene scene = new Scene(articlePage);
                 stage.setScene(scene);
+                stage.setMaximized(true);
                 stage.show();
         });
         this.summary.setText(article.getSummary());

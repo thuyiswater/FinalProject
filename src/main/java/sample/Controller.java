@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,7 +26,7 @@ public class Controller implements Initializable {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/DefaultNews.fxml")));
         Stage welcomeWindow = (Stage) btnExplore.getScene().getWindow();
         welcomeWindow.setScene(new Scene(root));
-        welcomeWindow.setFullScreen(true);
-        welcomeWindow.setResizable(true);
+        welcomeWindow.setMaximized(true);
+        welcomeWindow.setResizable(false);
     }
 }
