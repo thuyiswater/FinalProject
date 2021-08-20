@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.util.Objects;
 
 
@@ -19,8 +18,6 @@ public class Main extends Application {
         primaryStage.show();
         primaryStage.setResizable(false);
         primaryStage.setMaximized(true);
-//        Scraper scraper = new Scraper();
-//        scraper.getHealth();
     }
 
     public static void main(String[] args) {

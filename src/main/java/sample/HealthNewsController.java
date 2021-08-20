@@ -2,8 +2,6 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
@@ -13,21 +11,23 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class HealthNewsController {
 
     @FXML
     private BorderPane health;
 
-    private List<Article> healthNewsList = new ArrayList<>();
-    private Categories categories = new Categories();
-    private Sites site = new Sites();
+    private final List<Article> healthNewsList = new ArrayList<>();
+    private final Categories categories = new Categories();
+    private final Sites site = new Sites();
 
     private static final int ARTICLES_PER_PAGE = 10;
     private static final int MAX_COLS = 4;
 
 
-    public HealthNewsController() throws IOException {
+    public HealthNewsController() throws IOException, ExecutionException, InterruptedException {
     }
 
 
@@ -35,8 +35,22 @@ public class HealthNewsController {
         ArrayList<Article> healthNewsList = new ArrayList<>();
         Article article;
         for (String link : categories.getHealthList()) {
-            article = site.getVnExpress(link);
-            healthNewsList.add(article);
+            if (link.contains("vnexpress")) {
+                article = site.getVnExpress(link);
+                healthNewsList.add(article);
+            } else if (link.contains("zingnews")) {
+                article = site.getZingNews(link);
+                healthNewsList.add(article);
+            } else if (link.contains("nhandan")) {
+                article = site.getNhanDan(link);
+                healthNewsList.add(article);
+            } else if (link.contains("tuoitre")) {
+                article = site.getTuoiTre(link);
+                healthNewsList.add(article);
+            } else {
+                article = site.getThanhNien(link);
+                healthNewsList.add(article);
+            }
         }
         return healthNewsList;
     }
@@ -46,36 +60,36 @@ public class HealthNewsController {
         healthNewsList.addAll(getHealthArticle());
         List<Node> articles = new ArrayList<>();
 
-        for (int i = 0; i < healthNewsList.size(); i++) {
+        for (Article article : healthNewsList) {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/FXML/ArticleCell.fxml"));
             AnchorPane anchorPane = loader.load();
             articles.add(anchorPane);
 
             ArticleCellController articleCellController = loader.getController();
-            articleCellController.setArticle(healthNewsList.get(i));
+            articleCellController.setArticle(article);
         }
 
         int pages = articles.size() / 10 + (articles.size() % 10 == 0 ? 0 : 1);
         Pagination pagination = new Pagination(pages);
         pagination.setPageFactory(page -> {
             int first = page * 10;
-            var pageArticles = articles.subList(first, first + ARTICLES_PER_PAGE);
+            List<Node> pageArticles = articles.subList(first, first + ARTICLES_PER_PAGE);
             GridPane pane = new GridPane();
             pane.setHgap(85);
             pane.setVgap(5);
             for (int i = 0; i < pageArticles.size(); i++) {
                 pane.add(pageArticles.get(i), i % MAX_COLS, i / MAX_COLS);
             }
-            pane.getStylesheets().add(Main.class.getResource("/CSS/dark-theme.css").toExternalForm());
+            pane.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/CSS/dark-theme.css")).toExternalForm());
             pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 
-            var scrollPane = new ScrollPane(pane);
-            scrollPane.setFitToHeight(false);
-            scrollPane.getStylesheets().add(Main.class.getResource("/CSS/dark-theme.css").toExternalForm());
+            ScrollPane scrollPane = new ScrollPane(pane);
+            scrollPane.setFitToHeight(true);
+            scrollPane.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/CSS/dark-theme.css")).toExternalForm());
             return scrollPane;
         });
-        pagination.getStylesheets().add(Main.class.getResource("/CSS/dark-theme.css").toExternalForm());
+        pagination.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/CSS/dark-theme.css")).toExternalForm());
         health.setCenter(pagination);
     }
 }

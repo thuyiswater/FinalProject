@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<FlowPane fx:id="hot" stylesheets="@../CSS/dark-theme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.NewNewsController">
-</FlowPane>
+<BorderPane fx:id="hot" stylesheets="@../CSS/dark-theme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.NewNewsController">
+</BorderPane>

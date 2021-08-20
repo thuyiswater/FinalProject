@@ -2,61 +2,92 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
+import javafx.scene.Node;
+import javafx.scene.control.Pagination;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
+import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
-public class EntertainmentNewsController implements Initializable {
+public class EntertainmentNewsController {
 
     @FXML
-    private GridPane entertainment;
+    private BorderPane entertainment;
 
     private List<Article> entertainmentNewsList = new ArrayList<>();
-    private Sites site = new Sites();
+    private final Categories categories = new Categories();
+    private final Sites site = new Sites();
 
-    private ArrayList<Article> getSportsArticle() throws IOException {
-        Categories categories = new Categories();
+    private static final int ARTICLES_PER_PAGE = 10;
+    private static final int MAX_COLS = 4;
+
+    public EntertainmentNewsController() throws IOException, ExecutionException, InterruptedException {
+    }
+
+    private ArrayList<Article> getSportsArticle() throws IOException, ExecutionException, InterruptedException {
         ArrayList<Article> entertainmentNewsList = new ArrayList<>();
         Article article;
         for (String link : categories.getEntertainmentList()) {
-            article = site.getVnExpress(link);
-            entertainmentNewsList.add(article);
+            if (link.contains("vnexpress")) {
+                article = site.getVnExpress(link);
+                entertainmentNewsList.add(article);
+            } else if (link.contains("zingnews")) {
+                article = site.getZingNews(link);
+                entertainmentNewsList.add(article);
+            } else if (link.contains("nhandan")) {
+                article = site.getNhanDan(link);
+                entertainmentNewsList.add(article);
+            } else if (link.contains("tuoitre")) {
+                article = site.getTuoiTre(link);
+                entertainmentNewsList.add(article);
+            } else {
+                article = site.getThanhNien(link);
+                entertainmentNewsList.add(article);
+            }
         }
         return entertainmentNewsList;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            entertainmentNewsList.addAll(getSportsArticle());
-            int column = 0;
-            int row = 1;
-            for (int i = 0; i < entertainmentNewsList.size(); i++) {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/FXML/ArticleCell.fxml"));
-                AnchorPane anchorPane = loader.load();
+    @FXML
+    public void initialize() throws IOException, ExecutionException, InterruptedException {
+        entertainmentNewsList.addAll(getSportsArticle());
+        List<Node> articles = new ArrayList<>();
 
-                ArticleCellController articleCellController = loader.getController();
-                articleCellController.setArticle(entertainmentNewsList.get(i));
+        for (Article article : entertainmentNewsList) {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/FXML/ArticleCell.fxml"));
+            AnchorPane anchorPane = loader.load();
+            articles.add(anchorPane);
 
-                if (column == 4) {
-                    column = 0;
-                    row++;
-                }
-
-                entertainment.add(anchorPane, column++, row);
-                anchorPane.setPadding(new Insets(15));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            ArticleCellController articleCellController = loader.getController();
+            articleCellController.setArticle(article);
         }
+
+        int pages = articles.size() / 10 + (articles.size() % 10 == 0 ? 0 : 1);
+        Pagination pagination = new Pagination(pages);
+        pagination.setPageFactory(page -> {
+            int first = page * 10;
+            List<Node> pageArticles = articles.subList(first, first + ARTICLES_PER_PAGE);
+            GridPane pane = new GridPane();
+            pane.setHgap(85);
+            pane.setVgap(5);
+            for (int i = 0; i < pageArticles.size(); i++) {
+                pane.add(pageArticles.get(i), i % MAX_COLS, i / MAX_COLS);
+            }
+            pane.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/CSS/dark-theme.css")).toExternalForm());
+            pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+
+            ScrollPane scrollPane = new ScrollPane(pane);
+            scrollPane.setFitToHeight(true);
+            scrollPane.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/CSS/dark-theme.css")).toExternalForm());
+            return scrollPane;
+        });
+        pagination.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/CSS/dark-theme.css")).toExternalForm());
+        entertainment.setCenter(pagination);
     }
 }

@@ -1,11 +1,11 @@
 package sample;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class Categories {
-    private final List<String> newList;
+    private final List<String> latestList;
     private final List<String> covidList;
     private final List<String> politicsList;
     private final List<String> businessList;
@@ -18,21 +18,21 @@ public class Categories {
 
     Scraper scraper =  new Scraper();
 
-    public Categories() throws IOException {
-        newList = scraper.getNew();
-        covidList = scraper.getCovid();
-        politicsList = scraper.getPolitics();
-        businessList = scraper.getBusiness();
-        technologyList = scraper.getTech();
-        healthList = scraper.getHealth();
-        sportsList = scraper.getSports();
-        entertainmentList = scraper.getEntertainment();
-        worldList = scraper.getWorld();
-        othersList = scraper.getOthers();
+    public Categories() throws IOException, ExecutionException, InterruptedException {
+        latestList = scraper.getUrls(Scraper.Topic.LATEST).get();
+        healthList = scraper.getUrls(Scraper.Topic.HEALTH).get();
+        covidList = scraper.getUrls(Scraper.Topic.COVID).get();
+        politicsList = scraper.getUrls(Scraper.Topic.POLITICS).get();
+        businessList = scraper.getUrls(Scraper.Topic.BUSINESS).get();
+        technologyList = scraper.getUrls(Scraper.Topic.TECH).get();
+        sportsList = scraper.getUrls(Scraper.Topic.SPORTS).get();
+        entertainmentList = scraper.getUrls(Scraper.Topic.ENTERTAINMENT).get();
+        worldList =  scraper.getUrls(Scraper.Topic.WORLD).get();
+        othersList = scraper.getUrls(Scraper.Topic.OTHERS).get();
     }
 
-    public List<String> getNewList() {
-        return newList;
+    public List<String> getLatestList() {
+        return latestList;
     }
 
     public List<String> getCovidList() {

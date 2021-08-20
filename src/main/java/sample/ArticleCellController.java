@@ -26,11 +26,9 @@ public class ArticleCellController {
 
     public void setArticle(Article article) throws IOException {
         if (article.getImage() == null || article.getImage().isEmpty()) {
-            Image extraImage = new Image("Image/logo_default.jpg");
-            this.img.setImage(extraImage);
+            this.img.setImage(new Image("Image/logo_default.jpg"));
         } else {
-            Image mainImage = new Image(article.getImage());
-            this.img.setImage(mainImage);
+            this.img.setImage(new Image(article.getImage()));
         }
         this.link.setText(article.getTitle());
         this.link.setOnMouseClicked(e -> {
@@ -38,7 +36,6 @@ public class ArticleCellController {
                 WebView articlePage = new WebView();
                 articlePage.getEngine().load(article.getLink());
                 Scene scene = new Scene(articlePage);
-//                stage.setMaximized(true);
                 stage.setScene(scene);
                 stage.show();
         });
